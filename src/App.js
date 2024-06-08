@@ -1,23 +1,36 @@
-import logo from './logo.svg';
-import './App.css';
+import { useState } from "react";
+import "./App.css";
 
 function App() {
+  const [content, setContent] = useState("");
+
+  const handleChange = (event) => {
+    setContent(event.target.value);
+  };
+
+  const handleSubmit = () => {
+    console.log("Text Submitted");
+  };
+
   return (
     <div className="App">
       <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
+        <h1>AI FACT CHECKER </h1>
       </header>
+      <form onSubmit={handleSubmit}>
+        <div className="">
+          <textarea
+            value={content}
+            onChange={handleChange}
+            rows={20}
+            cols={60}
+            placeholder="Enter your content here..."
+          />
+        </div>
+        <div>
+          <button type="submit">Fact Check</button>
+        </div>
+      </form>
     </div>
   );
 }
